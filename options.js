@@ -1,6 +1,5 @@
 function saveOptions(e) {
     e.preventDefault();
-    console.log("yay");
     browser.storage.sync.set({
         hideThumbnailDuration: document.querySelector("#hideThumbnailDuration").checked,
         hideThumbnailProgressBar: document.querySelector("#hideThumbnailProgressBar").checked,
@@ -10,16 +9,29 @@ function saveOptions(e) {
 }
 
 function restoreOptions() {
-    function setCurrentChoice(result) {
-        document.querySelector("#hideThumbnailDuration").checked = result.hideThumbnailDuration || false;
-    }
-
     function onError(error) {
         console.log(`Error: ${error}`);
     }
 
-    let getting = browser.storage.sync.get("hideThumbnailDuration");
-    getting.then(setCurrentChoice, onError);
+    let gettingHideThumbnailDuration = browser.storage.sync.get("hideThumbnailDuration");
+    gettingHideThumbnailDuration.then((result) => {
+        document.querySelector("#hideThumbnailDuration").checked = result.hideThumbnailDuration || false;
+    }, onError);
+
+    let gettingHideThumbnailProgressBar = browser.storage.sync.get("hideThumbnailProgressBar");
+    gettingHideThumbnailProgressBar.then((result) => {
+        document.querySelector("#hideThumbnailProgressBar").checked = result.hideThumbnailProgressBar || false;
+    }, onError);
+
+    let gettingHidePlayerProgressBar = browser.storage.sync.get("hidePlayerProgressBar");
+    gettingHidePlayerProgressBar.then((result) => {
+        document.querySelector("#hidePlayerProgressBar").checked = result.hidePlayerProgressBar || false;
+    }, onError);
+
+    let gettingHidePlayerDuration = browser.storage.sync.get("hidePlayerDuration");
+    gettingHidePlayerDuration.then((result) => {
+        document.querySelector("#hidePlayerDuration").checked = result.hidePlayerDuration || false;
+    }, onError);
 }
 
 document.addEventListener("DOMContentLoaded", restoreOptions);
