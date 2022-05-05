@@ -1,0 +1,27 @@
+{
+
+    "manifest_version": 2,
+    "name": "UnSpoil",
+    "version": "1.0",
+  
+    "description": "Hides the progress bar from YouTube videos on specified channels or individual videos to prevent spoilers based on the length of the video.",
+  
+    "icons": {
+        "48": "icons/border-48.png"
+    },
+  
+    "content_scripts": [
+      {
+        "matches": ["*://*.youtube.com/*"],
+        "js": ["unspoil.js"],
+        "css": ["unspoil.css"]
+      }
+    ],
+
+    "browser_action": {
+      "default_icon": "icons/beasts-32.png",
+      "default_title": "Beastify",
+      "default_popup": "popup/toggle.html"
+    }
+  }
+  

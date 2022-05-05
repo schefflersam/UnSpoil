@@ -1,0 +1,23 @@
+.ytp-time-duration{
+    display: none;
+}
+
+.ytp-time-separator{
+    display: none;
+}
+
+.ytp-progress-bar-container {
+    display: none;
+}
+
+ytd-thumbnail-overlay-time-status-renderer{
+    visibility: hidden;
+}
+
+ytd-thumbnail-overlay-resume-playback-renderer {
+    visibility: hidden;
+}
+
+.hidden {
+	display: none;
+}
